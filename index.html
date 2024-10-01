@@ -389,19 +389,22 @@
                 return "La cantidad de ruedas debe ser un número mayor a 0.";
             }
         }
+        else{
+            return "Tipo seleccionado no válido. Por favor, seleccione 'aereo' o 'terrestre'.";
+        }
 
         return null;
     }
 
     function crearNuevoVehiculo(datos) {
-        const { id, modelo, anoFabricacion, alturaMaxima, autonomia, cantPuertas, cantRuedas, tipoSeleccionado } = datos;
+        const { id, modelo, anoFabricacion, velocidadMaxima, alturaMaxima, autonomia, cantPuertas, cantRuedas, tipoSeleccionado } = datos;
         const nuevoId = calcularNuevoId();
         let nuevoVehiculo;
 
         if (tipoSeleccionado === 'aereo') {
-            nuevoVehiculo = new Aereo(nuevoId, modelo, anoFabricacion, alturaMaxima, autonomia);
+            nuevoVehiculo = new Aereo(nuevoId, modelo, anoFabricacion, velocidadMaxima, alturaMaxima, autonomia);
         } else if (tipoSeleccionado === 'terrestre') {
-            nuevoVehiculo = new Terrestre(nuevoId, modelo, anoFabricacion, cantPuertas, cantRuedas);
+            nuevoVehiculo = new Terrestre(nuevoId, modelo, anoFabricacion, velocidadMaxima, cantPuertas, cantRuedas);
         }
         return nuevoVehiculo;
     }
